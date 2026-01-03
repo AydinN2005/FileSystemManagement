@@ -1,15 +1,14 @@
 package Tree;
 
-import LinkedList.CLinkedList;
+import CLinkedList.CList;
 import Objects.FileObject;
-import helper.Constants;
 
 public class TreeNode<T> {
     // node fields
     private T data;
     private TreeNode<T> parent;
-    private CLinkedList<TreeNode<T>> children;
-    private CLinkedList<FileObject> files;
+    private CList<TreeNode<T>> children;
+    private CList<FileObject> files;
 
     // getters and setters
     public void setData(T data) {
@@ -28,19 +27,19 @@ public class TreeNode<T> {
         return this.parent;
     }
 
-    public void setChildren(CLinkedList<TreeNode<T>> children) {
+    public void setChildren(CList<TreeNode<T>> children) {
         this.children = children;
     }
 
-    public CLinkedList<TreeNode<T>> getChildren() {
+    public CList<TreeNode<T>> getChildren() {
         return this.children;
     }
 
-    public void setFiles(CLinkedList<FileObject> files) {
+    public void setFiles(CList<FileObject> files) {
         this.files = files;
     }
 
-    public CLinkedList<FileObject> getFiles() {
+    public CList<FileObject> getFiles() {
         return this.files;
     }
 }

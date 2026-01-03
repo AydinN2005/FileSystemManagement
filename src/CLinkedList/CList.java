@@ -1,9 +1,9 @@
-package LinkedList;
+package CLinkedList;
 
 import CExceptions.EmptyException;
 import helper.Constants;
 
-public class CLinkedList<T> {
+public class CList<T> {
     //    list field
     private ListNode<T> head;
 
@@ -16,7 +16,6 @@ public class CLinkedList<T> {
             switch (actionType) {
                 case ADD_FIRST -> {
                     newNode.setNext(head);
-                    head.setPrev(newNode);
                     head = newNode;
                     break;
                 }
@@ -26,7 +25,6 @@ public class CLinkedList<T> {
                         curr = curr.getNext();
                     }
                     curr.setNext(newNode);
-                    newNode.setPrev(curr);
                 }
                 default -> {
                     throw new IllegalArgumentException("Insert right action type .");
@@ -46,15 +44,31 @@ public class CLinkedList<T> {
         }
         var temp = curr.getNext();
         newNode.setNext(temp);
-        temp.setPrev(newNode);
-        newNode.setPrev(curr);
         curr.setNext(newNode);
     }
 
     public <dataType> void DeleteWithData(dataType data) throws EmptyException {
         if (head == null)
             throw new EmptyException("List is empty .");
-        
+        if (head.getData() == data) {
+            Delete(Constants.ListConstants.DELETE_FIRST);
+        } else {
+            var curr = head;
+            var q = curr;
+            boolean deleted = false;
+            while (curr.getNext() != null) {
+                if (curr.getData() == data) {
+                    q.setNext(curr.getNext());
+                    deleted = true;
+                    break;
+                }
+                q = curr;
+                curr = curr.getNext();
+            }
+            if (!deleted)
+                System.out.println("Item not found .");
+        }
+
     }
 
     public void Delete(Constants.ListConstants actionType) throws EmptyException {
@@ -78,5 +92,14 @@ public class CLinkedList<T> {
                 }
             }
         }
+    }
+
+    public void printList() {
+        var curr = head;
+        while (curr != null) {
+            System.out.print(curr.getData() + " -> ");
+            curr = curr.getNext();
+        }
+        System.out.print("null");
     }
 }

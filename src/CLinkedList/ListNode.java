@@ -1,10 +1,9 @@
-package LinkedList;
+package CLinkedList;
 
 public class ListNode<T> {
     //    list fields
     private T data;
     private ListNode<T> next;
-    private ListNode<T> prev;
 
     //    constructure
     public ListNode(T data) {
@@ -26,13 +25,5 @@ public class ListNode<T> {
 
     public ListNode<T> getNext() {
         return this.next;
-    }
-
-    public void setPrev(ListNode<T> prev) {
-        this.prev = prev;
-    }
-
-    public ListNode<T> getPrev() {
-        return this.prev;
     }
 }
